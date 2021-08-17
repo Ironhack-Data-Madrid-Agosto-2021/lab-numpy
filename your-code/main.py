@@ -120,13 +120,12 @@ for i in range(2):
 """
 #17. Print d and f. Do you have your expected f?
 For instance, if your d is:
-
-
-
-print(f)
-print(d)
-
 """
+
+#print(f)
+#print(d)
+
+
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
 ("A", "B", "C", "D", and "E") to label the array elements? You are expecting the result to be:
@@ -155,9 +154,5 @@ for i in range(2):
                         elif d[i][j][k] == d_max:
                                 f2[i][j][k] = 'E'
 
-print(f2)
-print(d)
-print(d_max)
-print(d_mean)
-print(d_min)
+
 
