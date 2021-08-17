@@ -1,66 +1,106 @@
 #1. Import the NUMPY package under the name np.
 
-
+import numpy as np
 
 #2. Print the NUMPY version and the configuration.
+
+#print(np.__version__)
+
+#print(np.show_config())
 
 
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 
-
+a = np.random.random((2,3,5))
+# the methods are np.random.random() , np.random.randint() and np.random.choice()
 
 #4. Print a.
 
+#print(a)
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
 
+b = np.ones((5,2,3))
+
 
 
 #6. Print b.
+#print(b)
 
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
+#print(b.size)
 
+#print(a.size)
 
+# Both size 30
 
 #8. Are you able to add a and b? Why or why not?
+# You can only add arrays with the same shape
+
+#print(a.shape) >> (2,3,5)
+#print(b.shape) >> (5,2,3)
+
+#Therefore no, unless we transpose one of them
 
 
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
+c = b.transpose(1,2,0)
+
+#print(c.shape) >> (2,3,5)
 
 
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
+d = a + c
+#print(d)
+
+#Now it works because they both have the same shape
 
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
+#print(a)
+#print(d)
 
+#Yes, since b was an array just made of ones (1), the result of adding that to another array is the sum of a 
+# (which has values from 0 to 1) plus 1- ex. a is (0.5, 0.6, 0.7) b is (1, 1, 1) so the sum is (1.5, 1.6, 1.7)
 
 
 #12. Multiply a and c. Assign the result to e.
-
+e = a * c
 
 
 #13. Does e equal to a? Why or why not?
 
+#print(e)
 
-
+#print(a == e)
+# Yes, they are equal arrays, because c is the transpose of b which is an array made of ones (1)
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
 
+d_max = d.max()
+d_min = d.min()
+d_mean = d.mean()
+#print(d_max) >> 1.9977545379746098
+#print(d_min) >> 1.003149458249424
+#print(d_mean) >> 1.5144969733282005
 
 
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
+f = np.empty([2,3,5])
+#print(f)
+
 
 
 
@@ -74,6 +114,34 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
+#RESULT!
+'''for i in range(d.shape[0]):
+        for j in range(d.shape[1]):
+                for k in range(d.shape[2]):
+                        valor = d[i][j][k]
+                        if valor > d_min and valor < d_mean:
+                                f[i][j][k] = 25
+                        elif valor > d_mean and valor < d_max:
+                                f[i][j][k] = 75
+                        elif valor == d_mean:
+                                f[i][j][k] = 50
+                        elif valor == d_min:
+                                f[i][j][k] = 0
+                        elif valor == d_max:
+                                f[i][j][k] = 100
+#print(f)
+
+'''
+
+                        
+'''
+#print(d)
+#print(f)
+for i in d:
+        for k in i:
+                print(k)
+'''
+
 
 
 
@@ -98,7 +166,10 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
+#print(d)
+#print(f)
 
+#YES!! FINALLY!!!
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -112,3 +183,27 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+'''A = 0
+B = 25
+C = 50
+D = 75
+E = 100
+'''
+f2 = np.empty([2,3,5], dtype=str)
+for i in range(d.shape[0]):
+        for j in range(d.shape[1]):
+                for k in range(d.shape[2]):
+                        valor = d[i][j][k]
+                        if valor > d_min and valor < d_mean:
+                                f2[i][j][k] = 'B'
+                        elif valor > d_mean and valor < d_max:
+                                f2[i][j][k] = 'D'
+                        elif valor == d_mean:
+                                f2[i][j][k] = 'C'
+                        elif valor == d_min:
+                                f2[i][j][k] = 'A'
+                        elif valor == d_max:
+                                f2[i][j][k] = 'E'
+
+
+print(f2)
