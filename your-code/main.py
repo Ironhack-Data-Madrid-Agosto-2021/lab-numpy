@@ -156,5 +156,8 @@ for i in range(2):
                                 f2[i][j][k] = 'E'
 
 print(f2)
-
+print(d)
+print(d_max)
+print(d_mean)
+print(d_min)
 
