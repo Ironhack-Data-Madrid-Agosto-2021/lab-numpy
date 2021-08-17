@@ -102,9 +102,9 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
-for i in range(2):
-        for j in range(3):
-                for k in range(5):
+for i in range(d.shape[0]):
+        for j in range(d.shape[1]):
+                for k in range(d.shape[2]):
                         if d[i][j][k] > d_min and d[i][j][k] < d_mean:
                                 f[i][j][k] = 25
                         elif d[i][j][k] > d_min and d[i][j][k] < d_max:
@@ -125,7 +125,6 @@ For instance, if your d is:
 #print(f)
 #print(d)
 
-
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
 ("A", "B", "C", "D", and "E") to label the array elements? You are expecting the result to be:
@@ -140,9 +139,9 @@ Again, you don't need Numpy in this question.
 """
 f2 = np.empty([2,3,5], str)
 
-for i in range(2):
-        for j in range(3):
-                for k in range(5):
+for i in range(d.shape[0]):
+        for j in range(d.shape[1]):
+                for k in range(d.shape[2]):
                         if d[i][j][k] > d_min and d[i][j][k] < d_mean:
                                 f2[i][j][k] = 'B'
                         elif d[i][j][k] > d_min and d[i][j][k] < d_max:
